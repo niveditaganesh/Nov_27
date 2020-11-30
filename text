@@ -1,0 +1,34 @@
+HALL DETAILS::
+{
+    "name":"hall1",
+    "squareFeet":1000,
+    "noOfSeats":550,
+    "pricePerHour":250
+}
+{
+    "name":"hall2",
+    "squareFeet":1200,
+    "noOfSeats":580,
+    "pricePerHour":280
+}
+
+USER DETAILS::
+{
+    "name":"Person-1",
+    "Email":"person1@gmail.com",
+    "Tel":1234567890
+}
+{
+    "name":"Person-2",
+    "Email":"person2@gmail.com",
+    "Tel":5678901234
+}
+
+ORDER DETAILS::
+{
+    "hallId":1,
+    "customerId":1,
+    "startDate":"Jan 10",
+    "endDate":"Jan 11",
+    "totalAmount":500
+}
