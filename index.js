@@ -5,10 +5,12 @@ var hallbookings=[],users=[],orders=[],count=0,sum=0,hsum=0;
 
 app.use(bodyParser.json())
 
+//List hall details
 app.get("/hallbookings",(req,res)=>{
 res.json(hallbookings)
 })
 
+//create new hall details
 app.post("/hallbooking",(req,res)=>{
   req.body.id=hallbookings.length+1;
   console.log(req.body)  
@@ -16,6 +18,7 @@ app.post("/hallbooking",(req,res)=>{
   res.json({message:"hall details created"})
 })
 
+//get one hall details
 app.get("/hallbooking/:id",(req,res)=>{
     let hall=hallbookings.find(e=>e.id==req.params.id)
     if(hall){
@@ -27,6 +30,7 @@ app.get("/hallbooking/:id",(req,res)=>{
     }
 })
 
+//update hall details
 app.put("/hallbooking/:id",(req,res)=>{
     let hallIndex=hallbookings.findIndex((e)=>e.id==req.params.id)
     if(hallIndex !== -1){
@@ -42,6 +46,7 @@ app.put("/hallbooking/:id",(req,res)=>{
     }
 })
 
+//delete hall details
 app.delete("/hallbooking/:id",(req,res)=>{
     let hallIndex=hallbookings.findIndex((e)=>e.id==req.params.id)
     if(hallIndex !== -1){
@@ -56,11 +61,12 @@ app.delete("/hallbooking/:id",(req,res)=>{
     }
 })
 
-
+//list customers
 app.get("/users",(req,res)=>{
     res.json(users)
     })
     
+//create customer
     app.post("/user",(req,res)=>{
       req.body.id=users.length+1;
       console.log(req.body)  
@@ -68,6 +74,7 @@ app.get("/users",(req,res)=>{
       res.json({message:"user created"})
     })
     
+//get one customer
     app.get("/user/:id",(req,res)=>{
         let user=users.find(e=>e.id==req.params.id)
         if(user){
@@ -79,6 +86,7 @@ app.get("/users",(req,res)=>{
         }
     })
     
+//update customer details
     app.put("/user/:id",(req,res)=>{
         let userIndex=users.findIndex((e)=>e.id==req.params.id)
         if(userIndex !== -1){
@@ -94,6 +102,7 @@ app.get("/users",(req,res)=>{
         }
     })
     
+//delete customer details
     app.delete("/user/:id",(req,res)=>{
         let userIndex=users.findIndex((e)=>e.id==req.params.id)
         if(userIndex !== -1){
@@ -108,6 +117,7 @@ app.get("/users",(req,res)=>{
         }
     })
 
+//booking hall
     app.post("/order",(req,res)=>{
         req.body.id=orders.length+1;
         let dateArr1=req.body.startDate.split("/");
@@ -149,10 +159,12 @@ app.get("/users",(req,res)=>{
         }
       })
 
+//getting all the booked halls
       app.get("/orders",(req,res)=>{
         res.json(orders)
         })
 
+//getting the value spent by customer A
       app.get("/order/:id",(req,res)=>{
             let orderval=orders.filter(e=>e.customerId==req.params.id)
          for(let n=0;n<orderval.length;n++){
@@ -165,6 +177,7 @@ app.get("/users",(req,res)=>{
             sum=0;
         })
 
+//Total Value of Hall A
         app.get("/hallvalue/:id",(req,res)=>{
             let orderval=orders.filter(e=>e.hallId==req.params.id)
          for(let n=0;n<orderval.length;n++){
